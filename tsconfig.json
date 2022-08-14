@@ -21,5 +21,8 @@
     "baseUrl": "./",
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "paths": {
+    "react": [ "./node_modules/@types/react" ]
+  }
 }
