@@ -1,6 +1,7 @@
+import { Locale } from 'src/types';
+
 import en from './en';
 import ru from './ru';
-import { Locale } from 'src/types';
 
 const resources: Record<Locale, Record<string, any>> = {
   [Locale.EN]: en,

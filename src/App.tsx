@@ -1,8 +1,10 @@
 import { BrowserRouter } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { AppRouter } from 'src/AppRouter';
-import './App.css';
+
 import { ThemeProvider } from './useTheme';
+
+import './App.css';
 
 function App() {
   return (
