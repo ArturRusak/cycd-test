@@ -1,6 +1,7 @@
-import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import i18n from 'i18next';
 import { Locale } from 'src/types/Locale.enum';
+
 import resources from './resources';
 
 const initI18n = async () => {
