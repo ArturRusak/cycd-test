@@ -7,7 +7,6 @@ export const AppRouter = () => {
     <Routes>
       <Route element={<Main />} path="/main" />
       <Route element={<Contacts />} path="/contacts" />
-      <Route element={<Navigate replace to="/main" />} path="*" />
     </Routes>
   );
 };
