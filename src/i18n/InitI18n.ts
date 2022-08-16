@@ -5,9 +5,11 @@ import { Locale } from 'src/types/Locale.enum';
 import resources from './resources';
 
 const initI18n = async () => {
+  const lang = window.localStorage.getItem('lang');
+
   return i18n.use(initReactI18next).init({
     resources,
-    lng: window.navigator.language,
+    lng: lang ? JSON.parse(lang) : window.navigator.language,
     fallbackLng: Locale.EN,
     defaultNS: 'common',
 

@@ -7,6 +7,7 @@ export const setTheme = (mode: ThemeMode) =>
       mode,
       primary: {
         main: '#3f51b5',
+        light: '#9b9b9b',
       },
       secondary: {
         main: '#f50057',

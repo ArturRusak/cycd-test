@@ -17,7 +17,7 @@ export const Footer = ({ title }: FooterProps) => {
       })}
     >
       {title && (
-        <Typography sx={{ color: '#fff' }} variant="h3">
+        <Typography sx={{ color: '#fff', fontSize: '18px' }} variant="h3">
           {title}
         </Typography>
       )}

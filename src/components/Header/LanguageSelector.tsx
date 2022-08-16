@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { Box, Typography } from '@mui/material';
 import { Locale } from 'src/types/Locale.enum';
 
+import { useLocalStorage } from '../../hooks';
+
 const displayLocales: Partial<Record<Locale, string>> = {
   [Locale.EN]: 'EN',
   [Locale.RU]: 'RU',
@@ -9,6 +11,7 @@ const displayLocales: Partial<Record<Locale, string>> = {
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
+  const [, setLanguage] = useLocalStorage('lang');
   const locales = Object.keys(displayLocales) as Locale[];
 
   return (
@@ -22,6 +25,7 @@ const LanguageSelector = () => {
             sx={{ cursor: 'pointer' }}
             onClick={() => {
               i18n.changeLanguage(locale);
+              setLanguage(locale);
             }}
           >
             {displayLocales[locale]}

@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Close } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import {
+  type SxProps,
   Box,
   Checkbox,
   Dialog,
@@ -15,10 +16,10 @@ import {
   FormControlLabel,
   IconButton,
   Radio,
-  SxProps,
 } from '@mui/material';
 import type { Theme } from '@mui/material/styles';
 import db from 'src/db.json';
+import { useLocalStorage } from 'src/hooks';
 import { Organization, User } from 'src/types';
 import * as yup from 'yup';
 
@@ -51,8 +52,9 @@ export const FormDialog = ({ isOpen, onClose }: FormDialogProps) => {
   const { t } = useTranslation('form');
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [, storeSubscription] = useLocalStorage('subscription');
 
-  const { control, handleSubmit, watch, setValue, formState } = useForm({
+  const { control, handleSubmit, watch, setValue } = useForm({
     resolver: yupResolver(useSchema()),
   });
 
@@ -74,9 +76,9 @@ export const FormDialog = ({ isOpen, onClose }: FormDialogProps) => {
 
     setTimeout(() => {
       setIsLoading(false);
-      localStorage.setItem('subscription', JSON.stringify(data));
+      storeSubscription(data);
       onClose();
-      navigate('/about');
+      navigate('/main');
     }, 3000);
   };
 
@@ -122,6 +124,7 @@ export const FormDialog = ({ isOpen, onClose }: FormDialogProps) => {
             <br />
             <VirtualizedAutocomplete<User>
               fullWidth
+              multiple
               control={control}
               disabled={!companyValue}
               getOptionLabel={(option) => option?.firstName || ''}

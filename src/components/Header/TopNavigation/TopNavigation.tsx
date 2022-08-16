@@ -1,9 +1,9 @@
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
-import FlagIcon from '@mui/icons-material/Flag';
 import MenuIcon from '@mui/icons-material/Menu';
 import {
+  type SxProps,
   Box,
   Button,
   Divider,
@@ -14,16 +14,24 @@ import {
   ListItemButton,
   ListItemText,
   Toolbar,
-  Typography,
 } from '@mui/material';
+import type { Theme } from '@mui/material/styles';
+import { Logo } from 'src/components/Logo';
+
+const logoContainerStyles: SxProps<Theme> = {
+  flexDirection: 'row',
+  alignItems: 'center',
+  flexGrow: 1,
+  display: { xs: 'none', sm: 'flex' },
+};
 
 export const TopNavigation = () => {
   const { t } = useTranslation('common');
   const navItems = useMemo(
     () => [
       {
-        title: t('about'),
-        url: '/about',
+        title: t('main'),
+        url: '/main',
       },
       {
         title: t('contacts'),
@@ -40,7 +48,7 @@ export const TopNavigation = () => {
 
   const drawer = (
     <Box sx={{ textAlign: 'center' }} onClick={handleDrawerToggle}>
-      <Typography variant="h6">GGG</Typography>
+      <Logo />
       <Divider />
       <List>
         {navItems.map(({ title, url }) => (
@@ -56,7 +64,7 @@ export const TopNavigation = () => {
 
   return (
     <>
-      <Box component="nav">
+      <Box component="nav" py={2}>
         <Toolbar disableGutters>
           <IconButton
             aria-label="open drawer"
@@ -67,9 +75,8 @@ export const TopNavigation = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Box sx={{ flexDirection: 'row', alignItems: 'center', flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
-            <Typography variant="h6">GGG</Typography>
-            <FlagIcon htmlColor="yellow" />
+          <Box sx={logoContainerStyles}>
+            <Logo />
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map(({ url, title }) => (

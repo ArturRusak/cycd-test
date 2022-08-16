@@ -17,7 +17,6 @@ type VirtualizedAutocompleteProps<T> = Pick<TextFieldProps, 'label' | 'fullWidth
 const ListBoxComponent = React.forwardRef((props: any, ref: ForwardedRef<any>) => {
   const { children, role, ...other } = props;
   const itemCount = Array.isArray(children) ? children.length : 0;
-  const itemSize = 36;
 
   return (
     <div ref={ref} {...other}>
@@ -31,7 +30,7 @@ const ListBoxComponent = React.forwardRef((props: any, ref: ForwardedRef<any>) =
             height={200}
             role={role}
             rowCount={itemCount}
-            rowHeight={itemSize}
+            rowHeight={48}
             rowRenderer={(props) =>
               React.cloneElement(children[props.index], {
                 style: props.style,
@@ -49,18 +48,12 @@ const ListBoxComponent = React.forwardRef((props: any, ref: ForwardedRef<any>) =
 });
 
 export default function VirtualizedAutocomplete<T>(props: VirtualizedAutocompleteProps<T>) {
-  const { control, defaultValue, disabled, name, label, renderOption, options, isOptionEqualToValue, getOptionLabel } =
-    props;
+  const { control, defaultValue, label, name, renderOption, ...rest } = props;
   const { field, fieldState } = useController({ control, name, defaultValue });
 
   return (
     <Autocomplete
       ListboxComponent={ListBoxComponent}
-      defaultValue={null}
-      disabled={disabled}
-      getOptionLabel={getOptionLabel}
-      isOptionEqualToValue={isOptionEqualToValue}
-      options={options}
       renderInput={(params) => (
         <TextField
           error={!!fieldState.error}
@@ -71,8 +64,9 @@ export default function VirtualizedAutocomplete<T>(props: VirtualizedAutocomplet
         />
       )}
       renderOption={renderOption}
-      value={field.value || null}
+      value={field.value || []}
       onChange={(_, value) => field.onChange(value)}
+      {...rest}
     />
   );
 }

@@ -1,5 +1,13 @@
 {
-  "about": "About",
+  "main": "Main page",
+  "mainTitle": "SEO title",
   "contacts": "Contacts",
-  "helloWorld": "Hello world!"
+  "helloWorld": "Hello world!",
+  "subscriptions": "Subscriptions",
+  "organization": "Organization:",
+  "users": "User(s):",
+  "message": "Check the list and make the subscription for new users!",
+  "removeSubscriptions": "Remove subscription(s)",
+  "errorBoundary": "Ooops... something went wrong",
+  "errorButton": "Try again"
 }

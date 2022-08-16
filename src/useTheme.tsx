@@ -1,8 +1,9 @@
 import { createContext, useContext, useMemo, useState } from 'react';
-import { Theme, ThemeProvider as MaterialThemeProvider } from '@mui/material/styles';
+import { type Theme, ThemeProvider as MaterialThemeProvider } from '@mui/material/styles';
 import { setTheme } from 'src/theme';
 import { ThemeMode } from 'src/types';
 
+// TODO: someday I will add this
 interface ThemeProviderData {
   mode: ThemeMode;
   toggleMode: () => void;

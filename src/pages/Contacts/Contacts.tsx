@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from '@mui/material/Button';
+import { Box, Button, Typography } from '@mui/material';
 import { PageLayout } from 'src/components';
 import { FormDialog } from 'src/components/FormDialog';
 
@@ -18,9 +18,12 @@ export const Contacts = () => {
 
   return (
     <PageLayout title={t('common:contacts')}>
-      <Button variant="outlined" onClick={handleOpenDialog}>
-        {t('form:subscribe')}
-      </Button>
+      <Box sx={{ textAlign: 'center' }}>
+        <Typography mb={2}>{t('common:message')}</Typography>
+        <Button sx={{ margin: 'auto auto' }} variant="outlined" onClick={handleOpenDialog}>
+          {t('form:subscribe')}
+        </Button>
+      </Box>
       <FormDialog isOpen={isOpen} onClose={handleCloseDialog} />
     </PageLayout>
   );
