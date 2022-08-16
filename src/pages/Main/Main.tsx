@@ -27,7 +27,7 @@ export const Main = () => {
             <Typography mb={3} variant="h3">
               {t('helloWorld')}
             </Typography>
-            <Button component={NavLink} to="/contacts" variant="contained">
+            <Button component={NavLink} to="/cycd-test/contacts" variant="contained">
               {t('contacts')}
             </Button>
           </>
