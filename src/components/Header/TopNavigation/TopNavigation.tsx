@@ -31,11 +31,11 @@ export const TopNavigation = () => {
     () => [
       {
         title: t('main'),
-        url: '/main',
+        url: '/cycd-test/main',
       },
       {
         title: t('contacts'),
-        url: '/contacts',
+        url: '/cycd-test/contacts',
       },
     ],
     [t]
