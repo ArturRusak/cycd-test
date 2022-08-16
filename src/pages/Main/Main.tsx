@@ -9,9 +9,7 @@ import { useLocalStorage } from 'src/hooks';
 export const Main = () => {
   const { t } = useTranslation('common');
   const [subscriptions, setSubscriptions] = useLocalStorage('subscription');
-  const { organization, users } = subscriptions;
-
-  const hasSubscriptions = organization && users.length;
+  const hasSubscriptions = subscriptions?.organization && subscriptions?.users.length;
 
   const resetSubscriptions = useCallback(() => setSubscriptions({}), [setSubscriptions]);
 
@@ -19,7 +17,11 @@ export const Main = () => {
     <PageLayout title={t('mainTitle')}>
       <Box sx={{ textAlign: hasSubscriptions ? 'left' : 'center' }}>
         {hasSubscriptions ? (
-          <Subscriptions organization={organization} users={users} onResetSubscriptions={resetSubscriptions} />
+          <Subscriptions
+            organization={subscriptions.organization}
+            users={subscriptions.users}
+            onResetSubscriptions={resetSubscriptions}
+          />
         ) : (
           <>
             <Typography mb={3} variant="h3">
